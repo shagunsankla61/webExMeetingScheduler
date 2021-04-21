@@ -1,0 +1,33 @@
+{% extends 'webex_meeting_scheduler_app/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+	<div>
+		<h1 class="alert alert-warning" align="middle" >WEBEX Login</h1>
+		<br>
+		<hr class="mt-0 mb-4">
+		<div class="alert alert-light">
+			<br>
+			<form action="login.html" method="post">
+    			{% csrf_token %}
+    			{{ form|crispy}}
+    			<br>
+                {% if messages %}
+                    <div class="alert alert-danger">
+                        {% for message in messages %}
+                            <h5 align="middle">{{ message }}</h5>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+    			<hr class="mt-0 mb-4">
+    			<div class = "alert alert-light text-center">
+    				<input type="submit" value="Login" align="middle" class="btn btn-primary">
+    			</div>
+			</form>
+		</div>
+
+
+	</div>
+{% endblock %}
